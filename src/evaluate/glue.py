@@ -4,15 +4,14 @@
 #######################################################################################
 
 import torch
-import evaluate
-
+import evaluate as hf_evaluate
 from dataset.glue import target_dev_metric
 
 
 @torch.no_grad()
 def eval_glue_acc(model, dataloader, task_name):
     IS_STSB = model.num_labels == 1
-    metric = evaluate.load("glue", task_name)
+    metric = hf_evaluate.load("glue", task_name)
 
     model.eval()
     for batch in dataloader:
@@ -34,3 +33,4 @@ def eval_glue_acc(model, dataloader, task_name):
     target_metric = target_dev_metric(task_name)
     accuracy = eval_results[target_metric]
     return accuracy
+
