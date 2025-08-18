@@ -23,7 +23,7 @@ from transformers import (
 
 from dataset.glue import glue_dataset, max_seq_length, avg_seq_length
 from dataset.squad import squad_dataset
-from evaluate.nlp import test_accuracy
+from evaluate_utils.nlp import test_accuracy
 from prune import kprune
 from utils.capacity import *
 from utils.arch import *
@@ -232,3 +232,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
