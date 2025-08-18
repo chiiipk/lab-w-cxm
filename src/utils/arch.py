@@ -208,7 +208,7 @@ def convert_mask_to_dict(_mask):
     num_layers, num_units = _mask.shape
     _d = {}
     for l in range(num_layers):
-        _d[l] = torch.arange(num_units)[_mask[l] < 1e-5].tolist()
+        _d[l] = torch.arange(num_units)[(_mask[l] < 1e-5).cpu()].tolist()
     return _d
 
 
@@ -301,3 +301,4 @@ def print_params(_model, ):
 def remove_paddings(_value, att_mask):
     # remove paddings
     return _value[att_mask, :]
+
