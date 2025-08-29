@@ -32,7 +32,7 @@ batch_size: 4
 max_length: 256
 max_duration: "5000ba"
 eval_interval: "250ba"
-save_interval: "500ba"
+save_interval: 1 ep
 save_folder: "experiments/production"
 seed: 42
 device: gpu
