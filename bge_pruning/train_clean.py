@@ -165,8 +165,9 @@ def setup_optimizer(model, cfg):
 #         eval_dataloader=eval_dataspec,
 #         max_duration=cfg.max_duration,
 #         eval_interval=cfg.eval_interval,
-#         save_interval=cfg.get('save_interval', '500ba'),
+#         save_interval=cfg.get('save_interval', None),
 #         save_folder=cfg.get('save_folder', 'experiments/checkpoints'),
+
 #         device=device,
 #         callbacks=callbacks,
 #         optimizers=optimizer,
@@ -370,8 +371,10 @@ def main():
         eval_dataloader=eval_dataspec,
         max_duration=cfg.max_duration,
         eval_interval=cfg.eval_interval,
-        save_interval=cfg.get('save_interval', '500ba'),
+        save_interval=cfg.get('save_interval', None),
         save_folder=cfg.get('save_folder', 'experiments/checkpoints'),
+        save_overwrite=cfg.get('save_overwrite', True),
+        save_num_checkpoints_to_keep=cfg.get('save_num_checkpoints_to_keep', 1)
         device=device,
         callbacks=callbacks,
         optimizers=optimizer,
