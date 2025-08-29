@@ -25,6 +25,8 @@ from callbacks.pruning_callback import PruningCallback
 import os
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 os.environ["JAX_PLATFORMS"] = "cpu"
+print("[BOOT] train_clean.py started", flush=True)
+
 
 
 # def get_num_samples_in_batch(batch):
