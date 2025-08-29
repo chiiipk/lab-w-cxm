@@ -22,6 +22,10 @@ from omegaconf import OmegaConf
 # Import BGE components
 from models.composer_bge_m3 import ComposerBGEM3
 from callbacks.pruning_callback import PruningCallback
+import os
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
+os.environ["JAX_PLATFORMS"] = "cpu"
+
 
 # def get_num_samples_in_batch(batch):
 #     """Get actual batch size from interleaved tensor pairs"""
