@@ -374,7 +374,7 @@ def main():
         save_interval=cfg.get('save_interval', None),
         save_folder=cfg.get('save_folder', 'experiments/checkpoints'),
         save_overwrite=cfg.get('save_overwrite', True),
-        save_num_checkpoints_to_keep=cfg.get('save_num_checkpoints_to_keep', 1)
+        save_num_checkpoints_to_keep=cfg.get('save_num_checkpoints_to_keep', 1),
         device=device,
         callbacks=callbacks,
         optimizers=optimizer,
