@@ -22,9 +22,6 @@ from omegaconf import OmegaConf
 # Import BGE components
 from models.composer_bge_m3 import ComposerBGEM3
 from callbacks.pruning_callback import PruningCallback
-import os
-os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
-os.environ["JAX_PLATFORMS"] = "cpu"
 print("[BOOT] train_clean.py started", flush=True)
 
 
