@@ -59,24 +59,24 @@ from callbacks.pruning_callback import PruningCallback
     
 #     return microbatches
 
-# def setup_optimizer(model, cfg):
-#     """Production optimizer with stable L0 learning rates"""
-#     if not hasattr(model, 'l0_module'):
-#         return torch.optim.AdamW(model.parameters(), lr=cfg.lr, weight_decay=cfg.weight_decay)
+def setup_optimizer(model, cfg):
+    """Production optimizer with stable L0 learning rates"""
+    if not hasattr(model, 'l0_module'):
+        return torch.optim.AdamW(model.parameters(), lr=cfg.lr, weight_decay=cfg.weight_decay)
     
-#     # Stable parameter groups for L0 pruning
-#     model_params = [p for n, p in model.named_parameters() 
-#                    if not n.startswith('l0_module') and p.requires_grad]
-#     mask_params = [p for p in model.l0_module.masks.parameters() if p.requires_grad]
-#     lambda_params = [p for p in model.l0_module.lambdas.parameters() if p.requires_grad]
+    # Stable parameter groups for L0 pruning
+    model_params = [p for n, p in model.named_parameters() 
+                   if not n.startswith('l0_module') and p.requires_grad]
+    mask_params = [p for p in model.l0_module.masks.parameters() if p.requires_grad]
+    lambda_params = [p for p in model.l0_module.lambdas.parameters() if p.requires_grad]
     
-#     param_groups = [
-#         {'params': model_params, 'lr': cfg.lr, 'weight_decay': cfg.weight_decay},
-#         {'params': mask_params, 'lr': cfg.lr * 2, 'weight_decay': 0.0},  # Reduced from 10x
-#         {'params': lambda_params, 'lr': cfg.lr * 5, 'weight_decay': 0.0}  # Reduced from 100x
-#     ]
+    param_groups = [
+        {'params': model_params, 'lr': cfg.lr, 'weight_decay': cfg.weight_decay},
+        {'params': mask_params, 'lr': cfg.lr * 2, 'weight_decay': 0.0},  # Reduced from 10x
+        {'params': lambda_params, 'lr': cfg.lr * 5, 'weight_decay': 0.0}  # Reduced from 100x
+    ]
     
-#     return torch.optim.AdamW(param_groups, betas=cfg.get('betas', [0.9, 0.999]), eps=cfg.get('eps', 1e-8))
+    return torch.optim.AdamW(param_groups, betas=cfg.get('betas', [0.9, 0.999]), eps=cfg.get('eps', 1e-8))
 
 # def main():
 #     parser = argparse.ArgumentParser(description='BGE-M3 Pruning Training')
