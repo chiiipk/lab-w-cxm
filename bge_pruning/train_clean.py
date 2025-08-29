@@ -272,6 +272,7 @@ def split_batch(batch, microbatch_size):
     return microbatches
 
 def main():
+    print("[1] parse args...", flush=True)
     parser = argparse.ArgumentParser(description='BGE-M3 Pruning Training')
     parser.add_argument('config', type=str, help='Path to configuration file')
     parser.add_argument('--seed', type=int, default=42, help='Random seed')
