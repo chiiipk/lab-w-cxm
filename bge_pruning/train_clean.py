@@ -396,4 +396,5 @@ def main():
     hf_save_path = cfg.get('save_folder', 'experiments/production') + '_hf'
     model.save_pruned_hf_model(hf_save_path)
     print(f"💾 Model ready for deployment")
-
+if __name__ == "__main__":
+    main()
