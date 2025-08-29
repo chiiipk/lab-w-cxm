@@ -309,8 +309,8 @@ def main():
     train_dataloader = create_dataloader(
         dataset_name=args.dataset,
         split="train",
-        batch_size=cfg.get('batch_size', 16),
-        max_length=cfg.get('max_length', 512),
+        batch_size=cfg.get('batch_size', 4),
+        max_length=cfg.get('max_length', 256),
         task=args.task,
         text_field=args.text_field,
         label_field=args.label_field,
@@ -328,8 +328,8 @@ def main():
     eval_dataloader = create_dataloader(
         dataset_name=args.dataset,
         split=eval_split,
-        batch_size=cfg.get('batch_size', 16),
-        max_length=cfg.get('max_length', 512),
+        batch_size=cfg.get('batch_size', 4),
+        max_length=cfg.get('max_length', 256),
         task=args.task,
         text_field=args.text_field,
         label_field=args.label_field,
